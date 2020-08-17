@@ -2,11 +2,11 @@ import React from 'react';
 import PageTitle from 'ui_component/page_title';
 import RegFoldItemBox from 'ui_component/regist_folding_box';
 import InputTxt from 'ui_component/input_txt';
+import InputNum from 'ui_component/input_num';
 
 
 const RegTemplate = () => {
-	
-	
+
 	return (
 		<div className="contents">
 			<PageTitle
@@ -23,7 +23,7 @@ const RegTemplate = () => {
 			<RegFoldItemBox
 				title={'입력 카테고리 타이틀영역 필수'}
 				essential={true}
-				closed={true}
+				// closed={true}
 				tooltip = {
 					<ul>
 						<li>'네이버 쇼핑 카탈로그 상품 정보를 제공하여 내 판매 상품의 가격 관리를 용이하게 해주는 화면입니다.',</li>
@@ -44,9 +44,11 @@ const RegTemplate = () => {
 					</div>
 				}
 			>
-				<InputTxt
-					maxLeng={9999}
-				/>
+					<InputNum
+						width = {'300px'}
+						unit={'원'}
+					/>
+					<span>할인</span>
 			</RegFoldItemBox>
 
 			<div className="fixedBtnBox">

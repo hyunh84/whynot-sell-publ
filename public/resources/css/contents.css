@@ -49,6 +49,19 @@
 [class^="radioItem"] > em {display:block;margin:0 0 0 10px;line-height:20px;font-size:14px;}
 [class^="radioItem"].checked > span {background-position:center bottom;}
 
+/* button type radio box - float item */
+[class^="btnRadioBox"] {display:block;overflow:hidden;}
+[class^="btnRadioBox"] .btnRadoCase {display:bock;margin:0 -1px 0 0;}
+[class^="btnRadioBox"] .btnRadoCase:after {display:block;content:"";clear:both;width:0;height:0;line-height:0;}
+[class^="btnRadioBox"] label {display:block;position:relative;float:left;box-sizing:border-box;width:50%;margin:0 -1px 0 0;border:1px solid #dbdde2;}
+[class^="btnRadioBox"] label input[type="radio"] {display:block;position:absolute;top:0;left:0;width:0;height:0;opacity:0;}
+[class^="btnRadioBox"] label em {display:block;line-height:32px;color:#767a83;text-align:center;}
+[class^="btnRadioBox"] label.checked {border:1px solid #0035bd;}
+[class^="btnRadioBox"] label.checked em {color:#fff;background-color:#0035bd;}
+
+.btnRadioBox02 .btnRadoCase {margin:0 -1% 0 0;}
+.btnRadioBox02 .btnRadoCase label {width:33%;}
+
 /* design select box */
 [class^="dsigSelectWrap"] {display:inline-block;box-sizing:border-box;position:relative;text-align:left;border:1px solid #646d7b;background-color:#37404d;z-index:1;}
 [class^="dsigSelectWrap"] .selected {display:block;}
@@ -77,6 +90,16 @@
 [class^="pageTitleWrap"] .essential:after {display:block;content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:5px;background-color:#ff545c;}
 [class^="pageTitleWrap"] [class^="tooltipWrap"] {margin:0 0 0 5px;}
 
+/* period date set */
+[class^="periodWrap"] {display:inline-block;position:relative;padding:0 350px 0 0;}
+[class^="periodWrap"] .periodOpt button {position:relative;height:34px;padding:0 10px;margin:0 -1px 0 0;color:#666;border:1px solid #dbdde2;background-color:#fff;}
+[class^="periodWrap"] .periodOpt button.active {color:#fff;border:1px solid #3772ea;background-color:#3772ea;z-index:1;}
+[class^="periodWrap"] .periodFrom {position:absolute;right:0;top:0;}
+[class^="periodWrap"] .periodFrom:after {display:block;content:"";clear:both;overflow:hidden;width:0;height:0;line-height:0;}
+[class^="periodWrap"] .periodFrom > span {float:left;height:34px;line-height:34px;}
+[class^="periodWrap"] .periodFrom > span:nth-child(2) {padding:0 5px;}
+[class^="periodWrap"] .periodFrom > span .react-date-picker {line-height:32px;}
+
 /* tooltip guide style */
 [class^="tooltipWrap"] {display:inline-block;position:relative;vertical-align:middle;}
 [class^="tooltipWrap"] button {width:15px;height:15px;background:url('../images/ico_tip.png') no-repeat center;}
@@ -93,7 +116,7 @@
 [class^="regItemWrap"].closed [class^="titBox"]:after {background-position:center bottom;}
 [class^="regItemWrap"] [class^="titBox"] .tit {display:inline-block;font-size:15px;font-weight:500;}
 [class^="regItemWrap"] [class^="titBox"] .tit.essential {position:relative;padding:0 10px 0 0;}
-[class^="regItemWrap"] [class^="titBox"] .tit.essential:after {display:block;content:"";position:absolute;right:0;top:4px;width:5px;height:5px;border-radius:100%;background-color:#ff545c;}
+[class^="regItemWrap"] [class^="titBox"] .tit.essential:after {display:block;content:"";position:absolute;right:0;top:4px;width:4px;height:4px;border-radius:100%;background-color:#ff545c;}
 [class^="regItemWrap"] [class^="titBox"] [class^="tooltipWrap"] {margin:0 0 0 5px;}
 [class^="regItemWrap"] [class^="titBox"] .helpItemBox {display:inline-block;margin:0 0 0 5px;}
 [class^="regItemWrap"] [class^="titBox"] .helpItemBox .btnHelpTip {font-size:12px;color:#3772ea;}
@@ -107,7 +130,7 @@
 [class^="fixedBtnBox"] .btnR {float:right;}
 [class^="fixedBtnBox"] [class^="btnItemL"] + [class^="btnItemL"] {margin:0 0 0 5px;}
 
-/* table style */
+/* list table style */
 [class^="tblWrap"] {overflow-y:hidden;overflow-x:auto;width:100%;text-align:left;border:1px solid #dbdde2;}
 [class^="tblWrap"] .tl {text-align:left !important;}
 [class^="tblWrap"] .tc {text-align:center !important;}
@@ -124,20 +147,53 @@
 [class^="tblWrap_tc"] {text-align:center;}
 [class^="tblWrap_tr"] {text-align:right;}
 
+/* view and regist table */
+[class^="viewTblWrap"] {width:100%;}
+[class^="viewTblWrap"] table {width:100%;border-collapse:collapse;}
+[class^="viewTblWrap"] table tbody th {padding:0 10px;text-align:left;}
+[class^="viewTblWrap"] table tbody th .essential {display:inline-block;position:relative;padding:0 10px 0 0;}
+[class^="viewTblWrap"] table tbody th .essential:after {display:block;content:"";position:absolute;right:0;top:4px;width:5px;height:5px;border-radius:100%;background-color:#ff545c;}
+
+/* view layout wrap */
+[class^="viewWrap"] > ul > [class^="viewRow"] {margin:20px 0 0;padding:20px 0 0;border-top:1px solid #e3e7ee;}
+[class^="viewWrap"] > ul > [class^="viewRow"]:first-child {margin:0;padding:0;border-top:none;}
+[class^="viewWrap"] > ul > [class^="viewRow"]:after {display:block;content:"";clear:both;overflow:hidden;width:0;height:0;line-height:0;}
+[class^="viewWrap"] .essential {display:inline-block;position:relative;padding:0 10px 0 0;}
+[class^="viewWrap"] .essential:after {display:block;content:"";position:absolute;right:0;top:11px;width:4px;height:4px;border-radius:100%;background-color:#ff545c;}
+[class^="viewWrap"] > ul > [class^="viewRow"] > .tit {float:left;box-sizing:border-box;width:20%;line-height:34px;font-weight:400;}
+[class^="viewWrap"] > ul > [class^="viewRow"] > .tit [class^="tooltipWrap"] {margin: 0 0 0 5px;}
+[class^="viewWrap"] > ul > [class^="viewRow"] > .cont {float:right;box-sizing:border-box;width:80%;}
+[class^="viewWrap"] > ul > [class^="viewRow"] > .cont .rowBox {margin:10px 0 0;}
+[class^="viewWrap"] [class^="subViewBox"] {float:left;width:100%;margin:20px -20px 0;padding:20px;background-color:#f8f9fe;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li {margin:20px 0 0;padding:20px 0 0;border-top:1px solid #e3e7ee;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li:first-child {margin:0;padding:0;border-top:none;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li:after {display:block;content:"";clear:both;overflow:hidden;width:0;height:0;line-height:0;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li > .tit {float:left;box-sizing:border-box;width:20%;line-height:34px;color:#767a83;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont {float:right;box-sizing:border-box;width:80%;color:#767a83;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont [class^="regUnitRow"] {margin:10px 0 0;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont [class^="regUnitRow"]:first-child{margin:0;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont [class^="regUnitRow"] [class^="unitTxt"] {display:inline-block;margin:0 0 0 5px;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li.total > .tit {color:#3772ea;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li.total > .cont {color:#3772ea;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li.total .price {line-height:34px;}
+[class^="viewWrap"] [class^="subViewBox"] > ul > li.total .price em {display:inline-block;font-size:18px;font-weight:700;}
+
 /* nodata */
 [class^="nodata"] {padding:50px 10px;}
 [class^="nodata"] .tit {display:block;padding:70px 0 0;line-height:20px;font-size:16px;text-align:center !important;background:url('../images/ico_nodata.gif') no-repeat center top;background-size:50px;}
 
 /* tab box */
+[class^="regItemWrap"] [class^="regInptBox"] [class^="tabWrap"] {margin:-20px -20px 0;}
 [class^="tabWrap"] {margin:0 -20px;}
-[class^="tabWrap"] .tabItem {padding:0 0 20px;border-bottom:1px solid #dbdde2;}
+[class^="tabWrap"] .tabItem {padding:0;border-bottom:1px solid #dbdde2;}
 [class^="tabWrap"] .tabItem [class^="cmptSwiper"] {padding:0 20px;}
 [class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide {position:relative;}
 [class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide:after {display:block;content:"";position:absolute;left:-1px;top:50%;width:1px;height:10px;margin:-5px 0 0;background-color:#dbdde2}
-[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide button {padding:5px 20px;line-height:20px;font-size:16px;}
-[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide.active button {position:relative;color:#0035bd;}
-[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide.active button:after {display:block;content:"";position:absolute;left:20px;right:20px;bottom:0;height:2px;background-color:#0035bd;}
-[class^="tabWrap"] [class^="tabConts"] {display:none;margin:20px 20px 0;}
+[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide button {width:100%;padding:20px 0;}
+[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide button span {display:inline-block;padding:5px 20px;line-height:20px;font-size:16px;}
+[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide.active button span{position:relative;color:#0035bd;}
+[class^="tabWrap"] .tabItem [class^="cmptSwiper"] .swiper-wrapper .swiper-slide.active button span:after {display:block;content:"";position:absolute;left:20px;right:20px;bottom:0;height:2px;background-color:#0035bd;}
+[class^="tabWrap"] [class^="tabConts"] {display:block;margin:20px 20px 0;}
 
 /* category 선택 BOX */
 [class^="cateListWrap"] {overflow:hidden;padding:15px;}
@@ -157,8 +213,8 @@
 /**************************************************************************************
 ** Layer Popup
 **************************************************************************************/
-.layerMask {position:fixed;left:0;top:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.6);z-index:50;}
-[class^="layerWrap"] {display:none;position:fixed;left:50%;top:50%;width:400px;background-color:#fff;transform:translate(-50%, -50%);z-index:50;}
+.layerMask {position:fixed;left:0;top:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.6);z-index:100;}
+[class^="layerWrap"] {display:none;position:fixed;left:50%;top:50%;width:400px;background-color:#fff;transform:translate(-50%, -50%);z-index:100;}
 [class^="layerWrap"] header {background-color:#3772ea;}
 [class^="layerWrap"] header .layerTit {display:block;padding:20px 20px 10px;line-height:22px;font-size:18px;font-weight:500;color:#fff;text-align:center;}
 [class^="layerWrap"] .layerConts {padding:20px;}

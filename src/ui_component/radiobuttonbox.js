@@ -10,10 +10,10 @@ const Radiobox = ({objOpt, checkIdx, groupName, setState}) => {
 	});
 
 	return (
-		<>
-			{objOpt && objOpt.map((data, i)=>(
-				<label key={i} className={`radioItem ${activeIndex === i ? 'checked' : ''}`}>
-					<span>
+		<div className={`btnRadioBox${objOpt.length > 2 ? (objOpt.length < 10 ? '0'+ (objOpt.length-1) : objOpt.length-1) : ''}`}>
+			<div className="btnRadoCase">
+				{objOpt && objOpt.map((data, i) => (
+					<label key={i} className={ activeIndex === i ? 'checked' : '' }>
 						<input 
 							type="radio"
 							name={groupName}
@@ -21,19 +21,19 @@ const Radiobox = ({objOpt, checkIdx, groupName, setState}) => {
 							onClick={()=> setActiveIndex(i)}
 							defaultChecked={activeIndex === i  ? 'checked' : ''}
 						/>
-					</span>
-					<em>{data.optName}</em>
-				</label>
-			))}
-		</>
+						<em>{data.optName}</em>
+					</label>
+				))}
+			</div>
+		</div>
 	);
 }
 
 Radiobox.propTypes = {
-	checkIdx : PropTypes.number,
-	groupName : PropTypes.any.isRequired,
-	setState : PropTypes.func.isRequired,
 	objOpt : PropTypes.array.isRequired,
+	setState : PropTypes.func.isRequired,
+	groupName : PropTypes.string.isRequired,
+	checkIdx : PropTypes.number,
 }
 
 export default Radiobox;

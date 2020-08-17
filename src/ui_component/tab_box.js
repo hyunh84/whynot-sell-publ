@@ -1,83 +1,46 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Swiper from 'react-id-swiper';
 import PropTypes from 'prop-types';
 
-const TabCmpt = ({children, setIndex, tabName}) => {
-	let swiperLib = null;
-	const activeIndex = setIndex || 0;
-	const swiperRef = useRef(null);
-	const tabItemView = useRef(null);
-	const forFn = (target, callbak)=>{
-		target.forEach((val, i)=>{
-			callbak(val, i);
-		});
-	}
-	const rmvClass = (targetEl)=>{
-		forFn(targetEl, (val)=>{
-			val.classList.remove('active');
-		});
-	}
-	const addClass = (targetEl, i)=>{
-		forFn(targetEl, (val, j)=>{
-			if(i === j) val.classList.add('active');
-		});
-	}
+const TabCmpt = ({children, setIndex, tabName, setViewBox}) => {
+	let wrapperName = null;
+	const [activeIndex, setActiveIndex] = useState(setIndex || 0);
+	const tabWrap = useRef(null);
+
 	const params = {
 		slidesPerView: 'auto',
 		WrapperEl: 'ul',
 		freeMode: true,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-		on : {
-			init : (swiper)=> {
-				swiperLib = swiperRef.current.swiper;
-				swiperLib.slideTo(activeIndex, 600);
-				rmvClass(swiperLib.slides);
-				addClass(swiperLib.slides, activeIndex);
-				forFn(tabItemView.current.childNodes, (val, i)=>{
-					if(activeIndex === i) {
-						val.style.display = 'block';
-					}else{
-						val.style.display = 'none';
-					}
-				});
-			}
-		}
+		// pagination: {
+		// 	el: `.${wrapperName} .tabItem .swiper-pagination`,
+		// 	clickable: true,
+		// },
+		// on : {
+		// 	init : (swiper)=> {
+		// 		console.log(tabWrap.current.className);
+		// 	}
+		// }
 	}
 
 	useEffect(()=>{
-		forFn(swiperLib.slides, (val, i)=>{
-			val.addEventListener('click', (e)=>{
-				var _this = e.target.closest('li');
-				rmvClass(swiperLib.slides);
-				_this.classList.add('active');
-				forFn(tabItemView.current.childNodes, (val, j)=>{
-					if(j === i) {
-						val.style.display = 'block';
-					}else{
-						val.style.display = 'none';
-					}
-				});
-			});
-		});
-	});
+		setViewBox(activeIndex);
+		if(wrapperName === null) wrapperName = tabWrap.current.className;
+	}, [activeIndex]);
 
 	return (
-		<div className="tabWrap">
+		<div className="tabWrap" ref={tabWrap}>
 			<div className="tabItem">
 				<div className="cmptSwiper">
-					<Swiper {...params} ref={swiperRef}>
+					<Swiper {...params}>
 						{
 							tabName.map((val, i)=>{
-							return <li key={i}><button type="button">{val}</button></li>;
+								return <li key={i} className={activeIndex === i ? 'active' : ''}><button type="button" onClick={()=>setActiveIndex(i)}><span>{val}</span></button></li>;
 							})
 						}
 					</Swiper>
 				</div>
 			</div>
-			<div className="tabItemView" ref={tabItemView}>
+			<div className="tabItemView">
 				{children}
 			</div>
 		</div>
@@ -87,6 +50,7 @@ const TabCmpt = ({children, setIndex, tabName}) => {
 TabCmpt.propTypes = {
 	tabName : PropTypes.array.isRequired,
 	children : PropTypes.any.isRequired,
+	setViewBox : PropTypes.func.isRequired,
 	setIndex : PropTypes.number,
 }
 

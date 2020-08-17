@@ -1,43 +1,15 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import LayerPopup from 'ui_component/layer_popup';
 import Tooltip from 'ui_component/Tooltip';
 
 const RegFoldItemBox = ({children, title, helpTip, tooltip, essential, closed}) => {
 	const classEssent = essential ? 'essential' : '';
-	const wrapper = useRef(null);
-	const btnItem = useRef(null);
-	const foldBox = useRef(null);
-	// const btnGuide = useRef(null);
-	const initFn = ()=>{
-		if(closed) {
-			wrapper.current.classList.add('closed');
-			foldBox.current.style.display = 'none';
-		}else{
-			wrapper.current.classList.remove('closed');
-			foldBox.current.style.display = 'block';
-		}
-	}
-
-	useEffect(()=>{
-		initFn();
-
-		btnItem.current.addEventListener('click', ()=>{
-			var foldStyle = foldBox.current.style;
-
-			if(foldStyle.display === '' || foldStyle.display === 'none') {
-				foldStyle.display = 'block';
-				wrapper.current.classList.remove('closed');
-			}else{
-				foldStyle.display = 'none';
-				wrapper.current.classList.add('closed');
-			}
-		});
-	});
+	const [openConts, setOpenConts] = useState(closed ? false : true);//false 닫힘, true:열림
 
 	return (
-		<section className="regItemWrap" ref={wrapper}>
-			<div className="titBox" role="button" tabIndex="0" ref={btnItem}>
+		<section className={`regItemWrap ${openConts ? '':'closed'}`}>
+			<div className="titBox" role="button" tabIndex="0" onClick={()=> setOpenConts(openConts ? false : true)}>
 				<strong className={`tit ${classEssent}`}>{title}</strong>
 				{tooltip && (
 					<Tooltip>
@@ -57,7 +29,7 @@ const RegFoldItemBox = ({children, title, helpTip, tooltip, essential, closed}) 
 					</LayerPopup>
 				)}
 			</div>
-			<div className="regInptBox" ref={foldBox}>
+			<div className="regInptBox" style={{'display' : openConts ? 'block' : 'none'}} >
 				{children}
 			</div>
 		</section>

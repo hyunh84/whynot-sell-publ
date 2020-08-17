@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PageTitle from 'ui_component/page_title';
 import RegFoldItemBox from 'ui_component/regist_folding_box';
 import TabCmpt from 'ui_component/tab_box';
 
 const TableItem = () => {
+	var [tabmenu, setTabmenu] = useState(null);//tab contents view state
 
 	return (
 		<div className="contents">
@@ -31,34 +32,62 @@ const TableItem = () => {
 					tabName={
 						['Slide #1', 'Slide #2', 'Slide #3', 'Slide #4', 'Slide #5', 'Slide #6', 'Slide #7', 'Slide #8', 'Slide #9']
 					}
+					setViewBox={setTabmenu}
 				>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'red'}}>
-						TAB CONTENTS #01
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'blue'}}>
-						TAB CONTENTS #02
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'green'}}>
-						TAB CONTENTS #03
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'orange'}}>
-						TAB CONTENTS #04
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'yellow'}}>
-						TAB CONTENTS #05
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'pink'}}>
-						TAB CONTENTS #06
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'blueviolet'}}>
-						TAB CONTENTS #07
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'teal'}}>
-						TAB CONTENTS #08
-					</div>
-					<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'green'}}>
-						TAB CONTENTS #09
-					</div>
+					{
+						tabmenu === 0 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'red'}}>
+							TAB CONTENTS #01
+						</div>
+					}
+					{
+						tabmenu === 1 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'blue'}}>
+							TAB CONTENTS #02
+						</div>
+					}
+					{
+						tabmenu === 2 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'green'}}>
+							TAB CONTENTS #03
+						</div>
+					}
+					{
+						tabmenu === 3 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'orange'}}>
+							TAB CONTENTS #04
+						</div>
+					}
+					{
+						tabmenu === 4 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'yellow'}}>
+							TAB CONTENTS #05
+						</div>
+					}
+					{
+						tabmenu === 5 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'pink'}}>
+							TAB CONTENTS #06
+						</div>
+					}
+					{
+						tabmenu === 6 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'blueviolet'}}>
+							TAB CONTENTS #07
+						</div>
+					}
+					{
+						tabmenu === 7 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'teal'}}>
+							TAB CONTENTS #08
+						</div>
+					}
+					{
+						tabmenu === 8 &&
+						<div className="tabConts" style={{'padding' : '20px', 'backgroundColor' : 'green'}}>
+							TAB CONTENTS #09
+						</div>
+					}
 				</TabCmpt>
 			</RegFoldItemBox>
 			

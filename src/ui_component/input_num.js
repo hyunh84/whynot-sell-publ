@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const InputNum = ({unit}) => {
+const InputNum = ({width, unit}) => {
 	const iptWrap = useRef(null);
 	const ipt = useRef(null);
 
@@ -30,7 +30,7 @@ const InputNum = ({unit}) => {
 	});
 
 	return (
-		<span className="inpNumItem" ref={iptWrap}>
+		<span className="inpNumItem" ref={iptWrap} style={{'width' : width ? width : '100%'}} >
 			<input type="text" ref={ipt} />
 			<em className="unit">{unit}</em>
 		</span>
@@ -38,6 +38,7 @@ const InputNum = ({unit}) => {
 }
 
 InputNum.propTypes = {
+	width : PropTypes.string,
 	unit : PropTypes.string,
 }
 

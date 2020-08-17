@@ -1,14 +1,29 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import PageTitle from 'ui_component/page_title';
 import RegFoldItemBox from 'ui_component/regist_folding_box';
 import Checkbox from 'ui_component/checkbox';
 import Radiobox from 'ui_component/radiobox';
+import RadioButtonBox from 'ui_component/radiobuttonbox';
 import InputTxt from 'ui_component/input_txt';
 import InputNum from 'ui_component/input_num';
+import PeriodSett from 'ui_component/period_setting';
 
 const FormItem = () => {
 	
+	var [checkState, setCheckState] = useState(null);//checkbox 중복 선택 가능으로 state에 배열로 value값 저장
+	var [radioState, setRadioState] = useState(null);//radio 단일 선택 선택한 value값 저장
+	var [btnRadioState, setBtnRadioState] = useState(null);//button type radio 단일 선택 선택한 value값 저장
+
+	useEffect(()=> {
+		console.log(`checkState = ${checkState}`);
+	},[checkState]);
+	useEffect(()=> {
+		console.log(`radioState = ${radioState}`);
+	},[radioState]);
+	useEffect(()=> {
+		console.log(`btnRadioState = ${btnRadioState}`);
+	},[btnRadioState]);
 	
 	return (
 		<div className="contents">
@@ -28,7 +43,7 @@ const FormItem = () => {
 				// helpTip={true}
 			>
 				<div>
-					<p>높이 : 34px</p>
+					<p>높이 : 32px</p>
 					<br />
 					<button type="button" className="btnItem"><span>btnItem button</span></button>
 					<button type="button" className="btnItem02"><span>btnItem02 button</span></button>
@@ -56,14 +71,35 @@ const FormItem = () => {
 				// helpTip={true}
 			>
 				<Checkbox
-					val={'val01'}
-					txt={'check item template'}
-					checked={true}
-				/>
-				<Checkbox
-					val={'val02'}
-					txt={'check item template02'}
-					// checked={true}
+					objOpt={
+						[
+							{
+								'optName' : 'check Item Template1',
+								'value' : 'check01',
+								'checked' : true,
+
+							},
+							{
+								'optName' : 'check Item Template2',
+								'value' : 'check02',
+								// 'checked' : null,
+
+							},
+							{
+								'optName' : 'check Item Template3',
+								'value' : 'check03',
+								// 'checked' : null,
+
+							},
+							{
+								'optName' : 'check Item Template4',
+								'value' : 'check04',
+								'checked' : null,
+							},
+						]
+					}
+					checkIdx={1}
+					setState={setCheckState}
 				/>
 			</RegFoldItemBox>
 
@@ -72,29 +108,57 @@ const FormItem = () => {
 				// helpTip={true}
 			>
 				<Radiobox
-					val={'val01'}
-					txt={'check item template'}
+					objOpt={
+						[
+							{
+								'optName' : 'radio Item Template1',
+								'value' : 'radio01'
+
+							},
+							{
+								'optName' : 'radio Item Template2',
+								'value' : 'radio02'
+
+							},
+							{
+								'optName' : 'radio Item Template3',
+								'value' : 'radio03'
+
+							},
+							{
+								'optName' : 'radio Item Template4',
+								'value' : 'radio04'
+							},
+						]
+					}
 					groupName={'radio01'}
-					checked={true}
+					checkIdx={1}
+					setState={setRadioState}
 				/>
-				<Radiobox
-					val={'val02'}
-					txt={'check item template02'}
-					groupName={'radio01'}
-					// checked={true}
+			</RegFoldItemBox>
+
+			<RegFoldItemBox
+				title={'button radio box style'}
+				// helpTip={true}
+			>
+				<RadioButtonBox
+					objOpt={
+						[
+							{
+								'optName' : '설정함',
+								'value' : 'val01',
+							},
+							{
+								'optName' : '설정안함',
+								'value' : 'val02',
+							}
+						]
+					}
+					groupName={'settingRadio'}
+					checkIdx={1}
+					setState={setBtnRadioState}
 				/>
-				<Radiobox
-					val={'val02'}
-					txt={'check item template03'}
-					groupName={'radio01'}
-					// checked={true}
-				/>
-				<Radiobox
-					val={'val02'}
-					txt={'check item template04'}
-					groupName={'radio01'}
-					// checked={true}
-				/>
+				
 			</RegFoldItemBox>
 
 			<RegFoldItemBox
@@ -121,6 +185,23 @@ const FormItem = () => {
 				/>
 			</RegFoldItemBox>
 
+			<RegFoldItemBox
+				title={'calendar style'}
+				// helpTip={true}
+			>
+				<PeriodSett
+					periodOpt={[3, 5, 7, 15, 30, 60, 90, 120]}
+					startDate={'2020-8-1'}
+					endDate={'2020-8-17'}
+				/>
+			</RegFoldItemBox>
+
+			<RegFoldItemBox
+				title={'select style'}
+				// helpTip={true}
+			>
+				
+			</RegFoldItemBox>
 		</div>
 	);
 }
