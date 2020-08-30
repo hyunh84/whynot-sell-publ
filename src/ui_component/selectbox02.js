@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const Selectbox = ({defaultVal, selectVal}) => {
+const Selectbox02 = ({defaultVal, selectVal, width}) => {
   let value = selectVal;
   let defaultValue = defaultVal || value[0];
   const [selectValue, setSelectValue] = useState('');
@@ -22,9 +22,8 @@ const Selectbox = ({defaultVal, selectVal}) => {
     setIsOpen(open);
   }
   const domClickFn = ()=>{
-  	setIsOpen(false);
+    setIsOpen(false);
   }
-  
 
   useEffect(()=>{
     if(selectValue === '') setSelectValue(defaultValue);
@@ -35,8 +34,8 @@ const Selectbox = ({defaultVal, selectVal}) => {
   });
 
   return (
-    <div className={`dsigSelectWrap ${isOpen ? 'active' : ''}`} ref={selectWrap} >
-      <div className="selected" >
+    <div className={`dsigSelectWrap02 ${isOpen ? 'active' : ''}`} style={{'width' : width, 'zIndex' : isOpen && '10'}} ref={selectWrap} >
+      <div className="selected">
         <button type="button" onClick={(e)=> openBox(e)}>
           {selectValue}
         </button>
@@ -50,9 +49,10 @@ const Selectbox = ({defaultVal, selectVal}) => {
   );
 }
 
-Selectbox.propTypes = {
+Selectbox02.propTypes = {
+  width :  PropTypes.string,
   defaultVal :  PropTypes.string,
   selectVal :  PropTypes.array.isRequired,
 }
 
-export default Selectbox;
+export default Selectbox02;

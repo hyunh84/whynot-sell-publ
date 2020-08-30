@@ -18,12 +18,6 @@ const Gnb = () => {
 		});
 	}
 
-	// S : 검색영역 selectbox value값 임시 설정
-	const selectVal = {
-		'val' : ['구매자명', '구매자연락처', '수취인명', '상품번호', '운송장번호']
-	}
-	// E : 검색영역 selectbox value값 임시 설정
-
 	useEffect(()=>{
 		// let itemDepth01 = document.querySelectorAll(`.${itemMenuList.current.className} > ul > li > a`);
 		let itemDepth01 = document.querySelectorAll(`.${itemMenuList.current.className} > ul > li > a`);
@@ -93,8 +87,8 @@ const Gnb = () => {
 					</div>
 					<div className="searchBox">
 						<Selectbox
-							defaultVal = {selectVal.val[3]}
-							selectVal = {selectVal}
+							defaultVal = {'상품번호'}
+							selectVal = {['구매자명', '구매자연락처', '수취인명', '상품번호', '운송장번호']}
 						/>
 						<Searchbox></Searchbox>
 					</div>

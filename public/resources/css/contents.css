@@ -29,9 +29,12 @@
 
 [class^="inpNumItem"] {display:inline-block;box-sizing:border-box;position:relative;padding:0 70px 0 0;border:1px solid #dbdde2;background-color:#efefef;}
 [class^="inpNumItem"] input[type="tel"],
-[class^="inpNumItem"] input[type="text"] {box-sizing:border-box;width:100%;height:32px;padding:0 10px;font-size:14px;border:none;outline:none;background-color:transparent;appearance:none;-webkit-appearance:none;}
+[class^="inpNumItem"] input[type="text"] {box-sizing:border-box;width:100%;height:32px;padding:0 10px;font-size:14px;text-align:right;border:none;outline:none;background-color:transparent;appearance:none;-webkit-appearance:none;}
 [class^="inpNumItem"] .unit {display:block;overflow:hidden;position:absolute;right:0;top:0;width:60px;padding:2px 5px 0;line-height:30px;font-size:12px;text-align:center;border-left:1px solid #dbdde2;}
 [class^="inpNumItem"].focus {background-color:#fff;}
+
+/* 가격 등록 박스 텍스트 */
+[class^="regUnitRow"] [class^="unitTxt"] {display:inline-block;margin:0 0 0 5px;}
 
 /* design check box */
 [class^="chkItem"] {display:inline-block;position:relative;min-height:20px;padding:0 0 0 20px;vertical-align:middle;}
@@ -65,13 +68,34 @@
 /* design select box */
 [class^="dsigSelectWrap"] {display:inline-block;box-sizing:border-box;position:relative;text-align:left;border:1px solid #646d7b;background-color:#37404d;z-index:1;}
 [class^="dsigSelectWrap"] .selected {display:block;}
-[class^="dsigSelectWrap"] .selected button {position:relaitve;box-sizing:border-box;width:100%;height:30px;padding:2px 20px 0 5px;font-size:12px;color:#cdced1;}
+[class^="dsigSelectWrap"] .selected button {position:relative;box-sizing:border-box;width:100%;height:30px;padding:2px 20px 0 5px;font-size:12px;color:#cdced1;text-align:left;}
 [class^="dsigSelectWrap"] .selected button:after {display:block;content:"";position:absolute;right:5px;top:50%;margin:-3px 0 0;border-top:6px solid #cdced1;border-left:5px solid transparent;border-right:5px solid transparent;}
 [class^="dsigSelectWrap"] .selectOpt {display:none;position:absolute;top:100%;left:-1px;right:-1px;padding:5px 0;border:1px solid #646d7b;background-color:#37404d;}
 [class^="dsigSelectWrap"] .selectOpt li {padding:5px 0 0;}
 [class^="dsigSelectWrap"] .selectOpt li:first-child {padding:0;}
-[class^="dsigSelectWrap"] .selectOpt li button {box-sizing:border-box;height:30px;padding:2px 5px 0;font-size:12px;color:#cdced1;}
+[class^="dsigSelectWrap"] .selectOpt li button {box-sizing:border-box;width:100%;height:30px;padding:2px 5px 0;font-size:12px;color:#cdced1;text-align:left;}
 [class^="dsigSelectWrap"].active .selected button:after {transform:rotate(-180deg);}
+
+.dsigSelectWrap02 {border:1px solid #dbdde2;background-color:#fff;}
+.dsigSelectWrap02 .selected button {height:32px;color:#000;}
+.dsigSelectWrap02 .selected button:after {border-top:6px solid #646d7b;}
+.dsigSelectWrap02 .selectOpt {border:1px solid #dbdde2;background-color:#fff;}
+.dsigSelectWrap02 .selectOpt li button  {color:#000;}
+
+/* 이미지 등록 박스 */
+[class^="imgRegItem"] {display:inline-block;position:relative;}
+[class^="imgRegItem"] label {display:block;position:relative;width:140px;height:140px;border:1px dashed #ccc;}
+[class^="imgRegItem"] label:before {display:block;content:"";position:absolute;left:50%;top:50%;width:2px;height:45px;background-color:#777;transform:translate(-50%, -50%);}
+[class^="imgRegItem"] label:after {display:block;content:"";position:absolute;left:50%;top:50%;width:45px;height:2px;background-color:#777;transform:translate(-50%, -50%);}
+[class^="imgRegItem"] label input[type="file"] {position:absolute;left:0;top:0;width:0;height:0;}
+[class^="imgRegItem"] .regImg {position:absolute;left:0;top:0;right:0;bottom:0;border:1px solid #ccc;background-position:center;background-repeat:no-repeat;background-size:contain;background-color:#fff;}
+[class^="imgRegItem"] .funcBtn {position:absolute;left:0;right:0;bottom:0;text-align:center;background-color:rgba(0, 0, 0, 0.4);}
+[class^="imgRegItem"] .funcBtn button {position:relative;width:30%;height:20px;}
+[class^="imgRegItem"] .funcBtn button:after {display:block;content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;background-image:url('../images/ico_regi_func.png');background-repeat:no-repeat;background-size:auto 9px;transform:translate(-50%, -50%);}
+[class^="imgRegItem"] .funcBtn button em {display:block;overflow:hidden;width:0;height:0;line-height:0;}
+[class^="imgRegItem"] .funcBtn button.zoomImg:after {background-position:0 0;}
+[class^="imgRegItem"] .funcBtn button.chImg:after {background-position:-10px 0;}
+[class^="imgRegItem"] .funcBtn button.delImg:after {background-position:-20px 0;}
 
 /* 검색 입력박스 */
 [class^="srchItemWrap"] {display:inline-block;box-sizing:border-box;position:relative;}
@@ -101,10 +125,10 @@
 [class^="periodWrap"] .periodFrom > span .react-date-picker {line-height:32px;}
 
 /* tooltip guide style */
-[class^="tooltipWrap"] {display:inline-block;position:relative;vertical-align:middle;}
+[class^="tooltipWrap"] {display:inline-block;position:relative;line-height:0;vertical-align:2px;}
 [class^="tooltipWrap"] button {width:15px;height:15px;background:url('../images/ico_tip.png') no-repeat center;}
 [class^="tooltipWrap"] button em {display:block;overflow:hidden;width:0;height:0;line-height:0}
-[class^="tooltipWrap"] .tipCont {display:none;position:absolute;top:20px;left:-10px;width:500px;padding:20px;border:1px solid #e3e7ee;background-color:#fff;}
+[class^="tooltipWrap"] .tipCont {display:none;position:absolute;top:20px;left:-10px;width:500px;padding:20px;line-height:20px;border:1px solid #e3e7ee;background-color:#fff;}
 [class^="tooltipWrap"] .tipCont ul li {position:relative;margin:10px 0 0;padding:0 0 0 7px;line-height:20px;font-size:13px;font-weight:300;color:#767a83;word-break:keep-all;}
 [class^="tooltipWrap"] .tipCont ul li:first-child {margin:0;}
 [class^="tooltipWrap"] .tipCont ul li:before {display:block;content:"";position:absolute;left:0;top:6px;width:2px;height:2px;background-color:#767a83;}
@@ -172,7 +196,6 @@
 [class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont {float:right;box-sizing:border-box;width:80%;color:#767a83;}
 [class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont [class^="regUnitRow"] {margin:10px 0 0;}
 [class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont [class^="regUnitRow"]:first-child{margin:0;}
-[class^="viewWrap"] [class^="subViewBox"] > ul > li > .cont [class^="regUnitRow"] [class^="unitTxt"] {display:inline-block;margin:0 0 0 5px;}
 [class^="viewWrap"] [class^="subViewBox"] > ul > li.total > .tit {color:#3772ea;}
 [class^="viewWrap"] [class^="subViewBox"] > ul > li.total > .cont {color:#3772ea;}
 [class^="viewWrap"] [class^="subViewBox"] > ul > li.total .price {line-height:34px;}
